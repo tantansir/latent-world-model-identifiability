@@ -5,12 +5,10 @@
 :root {
   --fg: #1f2328;
   --fg-muted: #6b7280;
-  --bg: #eef1f6;
-  --surface: #ffffff;
-  --band-bg: #eef1f5;
-  --rule: #e0e4e9;
+  --bg: #ffffff;
+  --band-bg: #f6f7f8;
+  --rule: #e3e6e9;
   --link: #2b5fa8;
-  --accent: 59, 111, 182;          /* the paper's blue, as RGB parts */
   --sans: "Libertinus Sans", "Segoe UI", system-ui, sans-serif;
   --serif: "Libertinus Serif", Georgia, "Times New Roman", serif;
 }
@@ -21,33 +19,11 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
+  background: var(--bg);
   color: var(--fg);
   font-family: var(--sans);
   line-height: 1.6;
-  background-color: var(--bg);
-  /* a soft wash of the paper's blue behind the opening, fading into the page */
-  background-image:
-    radial-gradient(1200px 560px at 50% -220px,
-                    rgba(var(--accent), 0.20), rgba(var(--accent), 0) 72%),
-    radial-gradient(760px 420px at 88% 6%,
-                    rgba(224, 129, 44, 0.07), rgba(224, 129, 44, 0) 70%),
-    linear-gradient(180deg, #ffffff 0%, var(--bg) 700px);
-  background-repeat: no-repeat;
-  background-attachment: scroll;
 }
-
-/* a barely-perceptible grain so the large light areas are not dead flat */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-main, footer { position: relative; z-index: 1; }
 
 .wrap { max-width: 896px; margin: 0 auto; padding: 0 1.5rem; }
 
@@ -95,15 +71,7 @@ a:hover { text-decoration: underline; }
 .tldr .prose { margin: 0; }
 .sc { font-variant: small-caps; }
 
-.band {
-  background: linear-gradient(180deg,
-              rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.35)),
-              var(--band-bg);
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  padding: 3.5rem 0;
-  margin: 1rem 0 0;
-}
+.band { background: var(--band-bg); padding: 3.5rem 0; }
 .band h2 { margin-top: 0; }
 .centered { text-align: center; }
 
@@ -132,12 +100,8 @@ figure { margin: 2.4rem 0; text-align: center; }
 figure img, figure video {
   width: 100%;
   height: auto;
+  border-radius: 4px;
   display: block;
-  background: var(--surface);
-  border: 1px solid var(--rule);
-  border-radius: 6px;
-  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04),
-              0 10px 26px rgba(16, 24, 40, 0.055);
 }
 figcaption {
   font-family: var(--serif);
@@ -159,10 +123,7 @@ figure.wide { margin: 2.4rem 0 2.8rem; }
 }
 .video-row.half { grid-template-columns: repeat(2, 1fr); max-width: 620px; margin-inline: auto; }
 .video-row figure { margin: 0; }
-.video-row video {
-  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05),
-              0 6px 16px rgba(16, 24, 40, 0.06);
-}
+.video-row video { border: 1px solid var(--rule); }
 .video-row figcaption {
   font-size: 0.92rem;
   text-align: center;
@@ -175,10 +136,9 @@ figure.wide { margin: 2.4rem 0 2.8rem; }
 
 /* ---------- bibtex ---------- */
 .bibtex {
-  background: var(--surface);
+  background: var(--band-bg);
   border: 1px solid var(--rule);
   border-radius: 6px;
-  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
   padding: 1.1rem 1.25rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 0.86rem;
