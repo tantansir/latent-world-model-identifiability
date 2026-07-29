@@ -1,0 +1,13 @@
+{
+ "gru_pixelstate_m_g_k": [
+  0.724,
+  0.429,
+  0.783
+ ],
+ "analytic_pixel_gamma": 0.048,
+ "n_contact": [
+  6365,
+  3228
+ ],
+ "n_glide_te": 53
+}

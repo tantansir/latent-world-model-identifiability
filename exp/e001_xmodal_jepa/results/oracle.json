@@ -1,0 +1,20 @@
+{
+ "oracle_all": {
+  "log_mass": 0.29389214515686035,
+  "gamma": 0.5526738166809082,
+  "log_stiffness": 0.28260523080825806
+ },
+ "n_all": 4800,
+ "oracle_contact2": {
+  "log_mass": 0.8600797653198242,
+  "gamma": 0.696998655796051,
+  "log_stiffness": 0.8665131330490112
+ },
+ "n_contact2": 3228,
+ "oracle_contact5": {
+  "log_mass": 0.8434000015258789,
+  "gamma": 0.5684919357299805,
+  "log_stiffness": 0.831529974937439
+ },
+ "n_contact5": 2072
+}

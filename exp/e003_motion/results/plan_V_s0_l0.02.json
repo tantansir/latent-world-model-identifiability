@@ -1,0 +1,11 @@
+{
+ "tag": "V_s0_l0.02",
+ "n": 100,
+ "success_end": 0.06,
+ "success_any": 0.2,
+ "success_any15": 0.23,
+ "median_end_dist": 0.3201097579052238,
+ "median_any_dist": 0.27854890017198997,
+ "median_init_dist": 0.3632585344460411,
+ "median_improvement": 0.024219722281507497
+}

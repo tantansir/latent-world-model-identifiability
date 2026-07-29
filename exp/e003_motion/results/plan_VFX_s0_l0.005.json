@@ -1,0 +1,11 @@
+{
+ "tag": "VFX_s0_l0.005",
+ "n": 100,
+ "success_end": 0.14,
+ "success_any": 0.57,
+ "success_any15": 0.65,
+ "median_end_dist": 0.25967909193828176,
+ "median_any_dist": 0.10404674928549107,
+ "median_init_dist": 0.3632585344460411,
+ "median_improvement": 0.2431156462842721
+}

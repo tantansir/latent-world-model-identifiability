@@ -1,0 +1,48 @@
+# Whitelist repo: ignore everything at the root, then re-admit the code trees.
+/*
+!/.gitignore
+!/LICENSE
+!/README.md
+!/exp/
+!/paper/
+!/docs/
+
+# --- heavy artifacts inside the code trees -------------------------------
+# preprocessed corpora and simulator caches (tens of GB, regenerable)
+exp/*/data/
+exp/*/data_*/
+# trained checkpoints (regenerable; too large for git)
+*.pt
+*.pth
+# raw arrays, except the tiny trajectory used to draw the planning figure
+*.npy
+*.npz
+!exp/e003_motion/results/plan_viz.npz
+!exp/e003_motion/results/plan_viz_pair.npz
+# run logs and python caches
+__pycache__/
+*.pyc
+*.log
+*.err
+
+# --- only the preprint sources are public; venue-specific builds are not --
+paper/iclr2026/
+paper/iclr2026_9p/
+
+# --- LaTeX build products (sources and figures are tracked) --------------
+paper/**/*.aux
+paper/**/*.out
+paper/**/*.blg
+paper/**/*.toc
+paper/**/*.synctex.gz
+paper/**/*.fdb_latexmk
+paper/**/*.fls
+paper/**/main.txt
+paper/**/__MACOSX/
+*.zip
+
+# --- OS / editor ----------------------------------------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

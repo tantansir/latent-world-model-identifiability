@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Can Latent World Models Know?</title>
+<meta name="description" content="Physical parameter identifiability in multimodal predictive representations: a certificate-gated study of what a prediction-trained latent actually contains.">
+<meta property="og:title" content="What Can Latent World Models Know?">
+<meta property="og:description" content="Inputs bound what can be known; prediction targets decide what is retained — and one class of certified-recoverable parameters is acquired by none of the objectives we test.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/libertinus-sans@5.2.2/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/libertinus-sans@5.2.2/700.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/libertinus-serif@5.2.1/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/libertinus-serif@5.2.1/400-italic.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/libertinus-serif@5.2.1/700.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<main>
+
+<!-- ===================== hero ===================== -->
+<section class="wrap hero">
+  <h1>What Can Latent World Models Know?</h1>
+  <p class="subtitle">Physical Parameter Identifiability in Multimodal Predictive Representations</p>
+
+  <p class="authors">
+    Kaizhen Tan<sup>1,2</sup>,
+    Xin Xu<sup>2</sup>,
+    Siru Tao<sup>2</sup>,
+    Hanzhe Hong<sup>2</sup>,
+    Yang Feng<sup>3</sup>,
+    Heqing Du<sup>3</sup>
+  </p>
+  <p class="affil">
+    <sup>1</sup>New York University &nbsp;·&nbsp;
+    <sup>2</sup>Carnegie Mellon University &nbsp;·&nbsp;
+    <sup>3</sup>Columbia University
+  </p>
+
+  <div class="buttons">
+    <a class="btn" href="https://github.com/tantansir/latent-world-model-identifiability/blob/main/paper/arxiv/main.pdf">Paper (PDF)</a>
+    <a class="btn" href="https://github.com/tantansir/latent-world-model-identifiability">Code</a>
+  </div>
+</section>
+
+<!-- ===================== TL;DR ===================== -->
+<section class="wrap tldr">
+  <p class="prose"><strong>TL;DR:</strong> A latent world model carries the physical
+  parameters its prediction targets require of it — a modality that is fused
+  into the input but never forecast contributes nothing, and more data changes
+  this in no arm that lacks either the information or the prediction pressure.</p>
+</section>
+
+<!-- ===================== abstract ===================== -->
+<section class="band">
+  <div class="wrap">
+    <h2 class="centered">Abstract</h2>
+    <p class="prose">A central premise of latent world models is that predicting the
+    future forces a representation to internalize the physics of its environment.
+    Which physical quantities does a trained latent actually contain, and what
+    decides this? We answer with controlled interventions in <span class="sc">PokeWorld</span>,
+    an interactive environment whose visually identical objects hide mass, drag,
+    and contact stiffness. A certificate-gated protocol first certifies each
+    parameter as recoverable from raw observations, then measures whether it
+    enters the latent, so a null result can be attributed to the objective rather
+    than to the environment. The resulting <em>identifiability map</em> has two
+    organizing mechanisms and one frontier. Inputs limit what can be known, while
+    prediction targets decide what is retained. Stiffness enters the latent only
+    when touch is forecast (R<sup>2</sup> 0.50, against −0.02 when the same signal
+    is merely fused into the input), and under single-step prediction a
+    vision-only latent discards even perfectly visible object state. Drag marks
+    the frontier. It carries a recoverability certificate of 0.89 yet plateaus
+    near 0.13 under every deterministic prediction objective we test, while a
+    supervised head on the same trunk reaches 0.45. On RH20T, an input×target
+    factorial over scaling curves reproduces both mechanisms across two robots and
+    4,258 episodes.</p>
+  </div>
+</section>
+
+<!-- ===================== contents ===================== -->
+<nav class="wrap toc">
+  <span class="toc-label">Contents:</span>
+  <a href="#overview">Overview</a>
+  <a href="#pokeworld">PokeWorld</a>
+  <a href="#map">The map</a>
+  <a href="#frontier">The frontier</a>
+  <a href="#real">Real robots</a>
+  <a href="#control">Control</a>
+  <a href="#takeaways">Takeaways</a>
+</nav>
+
+<div class="prose-body">
+
+<!-- ===================== overview ===================== -->
+<section class="wrap section" id="overview">
+  <h2>Overview</h2>
+
+  <figure>
+    <img src="assets/img/fig_protocol.png" alt="The certificate-gated protocol: raw observations, certificate gate, interventions, frozen latent, and three evaluations.">
+    <figcaption>Every claim in this work follows one path. Raw observations must first
+    certify a parameter as recoverable; input, target, and horizon interventions then
+    train variants on identical data; and the frozen latent is read by probes and by
+    functional prediction and closed-loop control.</figcaption>
+  </figure>
+
+  <p>Latent world models are usually justified by a single claim: predicting the
+  future forces a representation to internalize physics. The claim is rarely
+  tested, because a negative result is ambiguous. If a probe cannot read mass out
+  of a latent, is mass absent from the representation, absent from the
+  observations, or merely beyond the probe?</p>
+
+  <p>We remove that ambiguity with a <strong>certificate gate</strong>. Before any
+  model is evaluated, each parameter must be certified <em>recoverable</em> from raw
+  observations — the best R<sup>2</sup> any estimator we construct achieves on raw
+  observation windows. Only certified parameters are asked of a model, so a null
+  result belongs to the objective rather than to the environment or the
+  instrument. Three questions follow in order: is it <em>recoverable</em>, is it
+  <em>decodable</em> from the latent, and is it <em>functionally used</em> by the
+  model's own predictions and control.</p>
+</section>
+
+<!-- ===================== pokeworld ===================== -->
+<section class="wrap section" id="pokeworld">
+  <h2>PokeWorld: the same pixels, different physics</h2>
+
+  <p>A force-controlled finger pokes an object whose mass, drag, and contact
+  stiffness are resampled every episode and <em>rendered identically</em>. Nothing
+  about appearance reveals them. The pairs below start from the same frame and are
+  driven by the same actions; only one hidden parameter differs. The inset in each
+  clip is the actual 64×64 observation the model consumes.</p>
+
+  <div class="video-row">
+    <figure>
+      <video autoplay muted loop playsinline preload="metadata"><source src="assets/video/drag_low.mp4" type="video/mp4"></video>
+      <figcaption>Ex. 1: low drag, γ = 0.5.</figcaption>
+    </figure>
+    <figure>
+      <video autoplay muted loop playsinline preload="metadata"><source src="assets/video/drag_high.mp4" type="video/mp4"></video>
+      <figcaption>Ex. 1: high drag, γ = 4.0.</figcaption>
+    </figure>
+    <figure>
+      <video autoplay muted loop playsinline preload="metadata"><source src="assets/video/mass_light.mp4" type="video/mp4"></video>
+      <figcaption>Ex. 2: light object, m = 0.5.</figcaption>
+    </figure>
+    <figure>
+      <video autoplay muted loop playsinline preload="metadata"><source src="assets/video/mass_heavy.mp4" type="video/mp4"></video>
+      <figcaption>Ex. 2: heavy object, m = 3.0.</figcaption>
+    </figure>
+  </div>
+
+  <div class="video-row half">
+    <figure>
+      <video autoplay muted loop playsinline preload="metadata"><source src="assets/video/stiff_soft.mp4" type="video/mp4"></video>
+      <figcaption>Ex. 3: soft contact, k = 500.</figcaption>
+    </figure>
+    <figure>
+      <video autoplay muted loop playsinline preload="metadata"><source src="assets/video/stiff_hard.mp4" type="video/mp4"></video>
+      <figcaption>Ex. 3: stiff contact, k = 6000.</figcaption>
+    </figure>
+  </div>
+
+  <p>The three parameters deliberately span an observability spectrum: drag is
+  chiefly visual, mass cross-modal, and stiffness almost purely tactile. Which
+  representation acquires which parameter is therefore diagnostic of the learning
+  dynamics rather than of the environment.</p>
+
+  <figure>
+    <img src="assets/img/fig_setup.png" alt="PokeWorld arena, sensor streams, and the X-JEPA variant family.">
+    <figcaption>The arena, the sensor streams that carry each parameter — sub-step
+    tactile peaks carry stiffness, glide decay carries drag, impulse–velocity
+    coupling carries mass — and the variant family, which factorially varies which
+    modalities enter the encoder and which are forecast.</figcaption>
+  </figure>
+</section>
+
+<!-- ===================== map ===================== -->
+<section class="wrap section" id="map">
+  <h2>The identifiability map</h2>
+
+  <figure>
+    <img src="assets/img/fig_map.png" alt="Identifiability map: probe R2 per physical quantity as the objective is cumulatively enriched, against recoverability certificates.">
+    <figcaption>Linear-probe R<sup>2</sup> per physical quantity as the objective is
+    cumulatively enriched, against the recoverability certificates. Multi-horizon
+    pressure recovers visible state, cross-modal targets recover contact physics, and
+    one certified-recoverable parameter (boxed) is acquired by none.</figcaption>
+  </figure>
+
+  <p><strong>Targets, not inputs, decide content.</strong> Contact stiffness enters
+  the latent only when touch is a prediction <em>target</em> (R<sup>2</sup>
+  0.40–0.57 across seeds, regularization strengths, architectures, and probe
+  families). It does not enter when the full tactile stream is merely fused into
+  the encoder (−0.02), nor when an equally sized proprioception target substitutes
+  for it (−0.01). What matters is not extra work, but that the extra work's answer
+  depends on the parameter.</p>
+
+  <figure>
+    <img src="assets/img/fig_targets.png" alt="Probe R2 by variant for stiffness, mass, and object position.">
+    <figcaption>Stiffness appears only under touch-as-target; object position emerges
+    from target <em>composition</em>. Dotted lines are the recoverability certificates.</figcaption>
+  </figure>
+
+  <p><strong>Vision-only models sit in a lazy equilibrium.</strong> Under
+  single-step prediction the vision-only latent barely contains the object —
+  position R<sup>2</sup> 0.04, despite the object being large, visible, and
+  trivially predictable. The equilibrium is self-consistent: a static object
+  contributes almost no prediction loss, so the encoder drops it, so the jointly
+  learned targets never demand it. Two independent interventions break it —
+  cross-modal targets (→ 0.58) and multi-horizon action-conditioned heads
+  (→ 0.89) — and they compose (0.98).</p>
+</section>
+
+<!-- ===================== frontier ===================== -->
+<section class="wrap section" id="frontier">
+  <h2>The frontier: a certified blind region</h2>
+
+  <p>Drag is where the map ends, and the certificate makes the ending informative.
+  A physics-informed estimator certifies drag recoverable at 0.89 from state
+  trajectories; a self-supervised flow sensor certifies that the derivative
+  information reaches the input; multi-horizon heads certify long-horizon
+  pressure. Yet across six families of prediction-side mechanisms it plateaus near
+  0.13, and a functional test shows the model's own glide predictions are beaten
+  by an estimator that simply assumes the population-median drag.</p>
+
+  <figure>
+    <img src="assets/img/fig_gamma_ledger.png" alt="Every intervention deployed against drag, against the pixel-derived and state-trajectory certificates.">
+    <figcaption>Every prediction-side mechanism deployed against drag, against the
+    pixel-derived (dashed) and state-trajectory (dotted) certificates. They plateau;
+    only a linearizing sensed coordinate and direct supervision move it.</figcaption>
+  </figure>
+
+  <p>The failure belongs to the objective, and not to one objective. A supervised
+  system-identification head on the same trunk lifts drag from 0.12 to 0.45 with
+  prediction quality unchanged, and swapping latent targets for pixel-reconstruction
+  targets leaves it at least as blind. Parameters whose readout is <em>slow</em> and
+  <em>ratio-type</em> under the sensed coordinates fall outside what deterministic
+  prediction objectives acquire — and a coordinate in which drag's trace becomes
+  linear partially unblinds it, exactly as the hypothesis predicts.</p>
+</section>
+
+<!-- ===================== real robots ===================== -->
+<section class="wrap section" id="real">
+  <h2>The mechanisms transfer to real robots</h2>
+
+  <p>Real scenes carry no ground-truth mass or stiffness, so the real-robot section
+  tests whether the map's <em>mechanisms</em> govern real multimodal streams. We port
+  the recipe unchanged to RH20T: a KUKA and a Flexiv arm, 896 and 4,258 episodes,
+  with every headline metric also reported on entirely held-out tasks.</p>
+
+  <figure class="wide">
+    <video autoplay muted loop playsinline preload="metadata"><source src="assets/video/realrobot_kuka.mp4" type="video/mp4"></video>
+    <figcaption>A held-out KUKA episode. Black is the wrist force–torque sensor; blue is
+    the force magnitude read out of the <em>frozen</em> latent by a linear probe. The
+    model was never trained to output force — it retains it because it was asked to
+    forecast touch.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="assets/img/fig_scissors.png" alt="Four-arm factorial across scale on Flexiv.">
+    <figcaption>The four-arm factorial across within-embodiment scaling. Left: position
+    readout sits at the passthrough bound for fused-input arms. Center: future-force
+    forecasting, the passthrough-immune metric — the full objective beats persistence at
+    every scale and improves with data, while the camera-only arm never matches it.
+    Right: direct 16-step error, where the factors compose.</figcaption>
+  </figure>
+
+  <p>Every arm missing either the information or the prediction pressure is
+  <em>flat in scale</em> across a 5× data range. Only the full multimodal objective
+  converts additional data into held-out gains. Scale cannot buy back what the
+  objective refuses.</p>
+</section>
+
+<!-- ===================== control ===================== -->
+<section class="wrap section" id="control">
+  <h2>The map predicts control utility</h2>
+
+  <p>Content transfers to closed-loop control, and control decomposes along the
+  map's rows. Both clips below are the <em>same</em> push-to-goal task with the same
+  planner, budget, and environment — model-predictive control on a frozen latent.
+  Only the representation differs.</p>
+
+  <div class="video-row half">
+    <figure>
+      <video autoplay muted loop playsinline preload="metadata"><source src="assets/video/plan_vision_only.mp4" type="video/mp4"></video>
+      <figcaption>Vision-only latent: the planner never reaches the object. Object–goal
+      distance stays at its initial 0.55.</figcaption>
+    </figure>
+    <figure>
+      <video autoplay muted loop playsinline preload="metadata"><source src="assets/video/plan_full.mp4" type="video/mp4"></video>
+      <figcaption>Full multimodal latent: the planner maneuvers behind the object and
+      drives it into the goal region, reaching 0.02.</figcaption>
+    </figure>
+  </div>
+
+  <p>Across 100 held-out episodes the object-blind vision-only latent reaches the
+  goal region in 20% of them, either target composition alone in 38–44%, and the
+  full model in 57% (random actions: 1%). Matched state content yields matched
+  control whether or not the latent carries stiffness — the position-goal task
+  discriminates state acquisition only, and force-limited manipulation is the
+  natural next benchmark.</p>
+</section>
+
+<!-- ===================== takeaways ===================== -->
+<section class="wrap section" id="takeaways">
+  <h2>Takeaways</h2>
+  <ol class="takeaways">
+    <li><strong>Every modality a prediction target.</strong> Un-forecast fusion is
+    discarded; forecast touch to know stiffness.</li>
+    <li><strong>Sense at the physics' bandwidth.</strong> Sub-step tactile statistics,
+    motion channels, derivative estimators.</li>
+    <li><strong>Ask for the future at multiple horizons, directly.</strong> This breaks
+    the lazy equilibrium and beats autoregressive composition.</li>
+    <li><strong>Tune anti-collapse to the data's intrinsic dimension.</strong> An order
+    of magnitude lighter on physical data than image-scale defaults.</li>
+    <li><strong>Structure first, scale second.</strong> Arms missing information or
+    pressure stay flat across a 5× range.</li>
+  </ol>
+  <p>The frontier leaves objective design a concrete target — slow, ratio-type
+  parameters — and a standing test for any candidate objective: the same streams,
+  the same map, the same certificates.</p>
+</section>
+
+<!-- ===================== bibtex ===================== -->
+<section class="wrap section" id="bibtex">
+  <h2>BibTeX</h2>
+  <pre class="bibtex">@article{tan2026identifiability,
+  title   = {What Can Latent World Models Know? Physical Parameter
+             Identifiability in Multimodal Predictive Representations},
+  author  = {Tan, Kaizhen and Xu, Xin and Tao, Siru and Hong, Hanzhe and
+             Feng, Yang and Du, Heqing},
+  year    = {2026}
+}</pre>
+</section>
+
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Code and paper sources:
+    <a href="https://github.com/tantansir/latent-world-model-identifiability">github.com/tantansir/latent-world-model-identifiability</a></p>
+    <p class="muted">The entire study, including all real-robot experiments, was run on a single RTX 4060.</p>
+  </div>
+</footer>
+
+</body>
+</html>

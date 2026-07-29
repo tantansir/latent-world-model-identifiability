@@ -1,0 +1,7 @@
+checkpoint: VFX_s0_l0.02_fl_g_gw16
+pure-glide windows: 74 / 8000 episodes
+C:\Users\Kaizh\anaconda3\Lib\site-packages\torch\nn\functional.py:5560: UserWarning: 1Torch was not compiled with flash attention. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\cuda\sdp_utils.cpp:555.)
+  attn_output = scaled_dot_product_attention(q, k, v, attn_mask, dropout_p, is_causal)
+direct16 err  : model 0.1158 | gamma-true 0.0002 | gamma-median 0.0535 | static 0.1535
+implied-vs-true displacement factor corr (n=35): -0.246
+implied factor R2 vs true factor: -34.833

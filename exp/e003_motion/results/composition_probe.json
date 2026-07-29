@@ -1,0 +1,27 @@
+{
+ "V": {
+  "finger": 0.989,
+  "object": 0.987,
+  "relative": 0.968
+ },
+ "VXp": {
+  "finger": 0.998,
+  "object": 0.989,
+  "relative": 0.984
+ },
+ "VXt": {
+  "finger": 0.984,
+  "object": 0.981,
+  "relative": 0.964
+ },
+ "VX": {
+  "finger": 0.996,
+  "object": 0.983,
+  "relative": 0.978
+ },
+ "VFX": {
+  "finger": 0.997,
+  "object": 0.987,
+  "relative": 0.983
+ }
+}

@@ -1,0 +1,11 @@
+{
+ "tag": "random",
+ "n": 100,
+ "success_end": 0.01,
+ "success_any": 0.01,
+ "success_any15": 0.01,
+ "median_end_dist": 0.3632585344460411,
+ "median_any_dist": 0.35633420925626225,
+ "median_init_dist": 0.3632585344460411,
+ "median_improvement": 0.0
+}

@@ -1,0 +1,11 @@
+{
+ "tag": "VXt_s0_l0.02",
+ "n": 100,
+ "success_end": 0.1,
+ "success_any": 0.38,
+ "success_any15": 0.42,
+ "median_end_dist": 0.3668455257000033,
+ "median_any_dist": 0.2132528902819607,
+ "median_init_dist": 0.3632585344460411,
+ "median_improvement": 0.1490799951779978
+}

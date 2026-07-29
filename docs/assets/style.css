@@ -1,0 +1,168 @@
+/* Project page styling, following the academic-page conventions of
+   agenticlearning.ai: Libertinus Sans for structure, Libertinus Serif for
+   prose, a single 896px column, and generous vertical rhythm. */
+
+:root {
+  --fg: #1f2328;
+  --fg-muted: #6b7280;
+  --bg: #ffffff;
+  --band-bg: #f6f7f8;
+  --rule: #e3e6e9;
+  --link: #2b5fa8;
+  --sans: "Libertinus Sans", "Segoe UI", system-ui, sans-serif;
+  --serif: "Libertinus Serif", Georgia, "Times New Roman", serif;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  line-height: 1.6;
+}
+
+.wrap { max-width: 896px; margin: 0 auto; padding: 0 1.5rem; }
+
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---------- hero ---------- */
+.hero { text-align: center; padding: 4.5rem 1.5rem 2rem; }
+.hero h1 {
+  font-size: 2.6rem;
+  line-height: 1.18;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.6rem;
+}
+.subtitle {
+  font-size: 1.28rem;
+  color: var(--fg-muted);
+  margin: 0 0 1.6rem;
+  font-weight: 400;
+}
+.authors { font-size: 1.08rem; margin: 0 0 0.35rem; }
+.authors sup, .affil sup { font-size: 0.72em; }
+.affil { font-size: 0.98rem; color: var(--fg-muted); margin: 0 0 1.8rem; }
+
+.buttons { display: flex; gap: 0.7rem; justify-content: center; flex-wrap: wrap; }
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1.15rem;
+  border: 1px solid var(--fg);
+  border-radius: 999px;
+  color: var(--fg);
+  font-size: 0.98rem;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.btn:hover { background: var(--fg); color: #fff; text-decoration: none; }
+
+/* ---------- prose ---------- */
+.prose, .prose-body p, .prose-body li {
+  font-family: var(--serif);
+  font-size: 1.12rem;
+  line-height: 1.72;
+}
+.tldr { padding: 0 1.5rem 2.5rem; }
+.tldr .prose { margin: 0; }
+.sc { font-variant: small-caps; }
+
+.band { background: var(--band-bg); padding: 3.5rem 0; }
+.band h2 { margin-top: 0; }
+.centered { text-align: center; }
+
+/* ---------- contents ---------- */
+.toc {
+  padding-top: 2rem;
+  padding-bottom: 2.5rem;
+  font-size: 0.98rem;
+  border-bottom: 1px solid var(--rule);
+}
+.toc-label { color: var(--fg-muted); margin-right: 0.6rem; }
+.toc a { margin-right: 1.1rem; }
+
+/* ---------- sections ---------- */
+.section { padding: 3rem 1.5rem; border-bottom: 1px solid var(--rule); }
+.section:last-child { border-bottom: none; }
+h2 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.2rem;
+}
+
+/* ---------- figures ---------- */
+figure { margin: 2.4rem 0; text-align: center; }
+figure img, figure video {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  display: block;
+}
+figcaption {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--fg-muted);
+  margin-top: 0.75rem;
+  text-align: left;
+  line-height: 1.55;
+}
+figure.wide { margin: 2.4rem 0 2.8rem; }
+
+/* ---------- video rows ---------- */
+.video-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin: 2.2rem 0;
+}
+.video-row.half { grid-template-columns: repeat(2, 1fr); max-width: 620px; margin-inline: auto; }
+.video-row figure { margin: 0; }
+.video-row video { border: 1px solid var(--rule); }
+.video-row figcaption {
+  font-size: 0.92rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* ---------- takeaways ---------- */
+.takeaways { padding-left: 1.3rem; }
+.takeaways li { margin-bottom: 0.55rem; }
+
+/* ---------- bibtex ---------- */
+.bibtex {
+  background: var(--band-bg);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 1.1rem 1.25rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  overflow-x: auto;
+}
+
+/* ---------- footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--rule);
+  padding: 2.5rem 0 3.5rem;
+  font-size: 0.95rem;
+}
+.site-footer p { margin: 0.3rem 0; }
+.muted { color: var(--fg-muted); }
+
+/* ---------- responsive ---------- */
+@media (max-width: 760px) {
+  .hero h1 { font-size: 1.95rem; }
+  .subtitle { font-size: 1.08rem; }
+  .video-row { grid-template-columns: repeat(2, 1fr); }
+  .section { padding: 2.2rem 1.25rem; }
+  .prose, .prose-body p, .prose-body li { font-size: 1.05rem; }
+}
+@media (max-width: 460px) {
+  .video-row, .video-row.half { grid-template-columns: 1fr; }
+}

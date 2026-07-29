@@ -1,0 +1,47 @@
+{
+ "variant": "V",
+ "seed": 0,
+ "params": 5089760,
+ "minutes": 0.0,
+ "iid": {
+  "touch_readout_r2_force": -0.0734,
+  "touch_readout_r2_all": -0.066,
+  "pos_readout_r2": 0.1774,
+  "roll_pos_err": {
+   "1": 0.1195,
+   "4": 0.1202,
+   "8": 0.122,
+   "16": 0.1586
+  },
+  "static_err": {
+   "1": 0.0027,
+   "4": 0.0099,
+   "8": 0.0181,
+   "16": 0.0326
+  },
+  "direct16_err": 0.1173,
+  "contact_onset_auc": 0.7901,
+  "onset_rate": 0.0168
+ },
+ "ood": {
+  "touch_readout_r2_force": -0.3233,
+  "touch_readout_r2_all": -0.254,
+  "pos_readout_r2": -0.0546,
+  "roll_pos_err": {
+   "1": 0.121,
+   "4": 0.123,
+   "8": 0.1258,
+   "16": 0.1686
+  },
+  "static_err": {
+   "1": 0.0026,
+   "4": 0.0093,
+   "8": 0.0171,
+   "16": 0.0314
+  },
+  "direct16_err": 0.115,
+  "contact_onset_auc": 0.75,
+  "onset_rate": 0.0064
+ },
+ "log": []
+}

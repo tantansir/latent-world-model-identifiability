@@ -1,0 +1,14 @@
+{
+ "cert_linear_raw": [
+  -0.013
+ ],
+ "cert_gru_raw": [
+  0.689
+ ],
+ "trunk_ridge": [
+  -0.011
+ ],
+ "trunk_mlp": [
+  -0.01
+ ]
+}
