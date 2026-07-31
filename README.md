@@ -107,8 +107,8 @@ python make_realrobot_video.py kuka
 @article{tan2026identifiability,
   title   = {What Can Latent World Models Know? Physical Parameter
              Identifiability in Multimodal Predictive Representations},
-  author  = {Tan, Kaizhen and Xu, Xin and Tao, Siru and Hong, Hanzhe and
-             Feng, Yang and Du, Heqing},
+  author  = {Tan, Kaizhen and Xu, Xin and Tao, Siru and Li, Yixiao and
+             Hong, Hanzhe and Feng, Yang and Du, Heqing},
   year    = {2026}
 }
 ```
