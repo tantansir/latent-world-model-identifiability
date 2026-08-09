@@ -25,7 +25,7 @@ __pycache__/
 *.log
 *.err
 
-# --- only the preprint sources are public; venue-specific builds are not --
+# --- venue-specific paper builds are not public ----------------------------
 paper/iclr2026/
 paper/iclr2026_9p/
 

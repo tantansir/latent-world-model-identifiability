@@ -3,10 +3,10 @@
 **Physical Parameter Identifiability in Multimodal Predictive Representations**
 
 [![Project Page](https://img.shields.io/badge/Project-Page-2b5fa8?style=flat-square)](https://tantansir.github.io/latent-world-model-identifiability/)
-[![Paper](https://img.shields.io/badge/Paper-PDF-b31b1b?style=flat-square)](paper/arxiv/main.pdf)
+[![arXiv](https://img.shields.io/badge/arXiv-2607.27017-b31b1b?style=flat-square)](https://arxiv.org/abs/2607.27017)
 [![License](https://img.shields.io/badge/License-MIT-6b7280?style=flat-square)](LICENSE)
 
-Code, results, and paper sources for a controlled study of *which* physical
+Code and results for a controlled study of *which* physical
 quantities a prediction-trained latent actually contains, and *what decides* it.
 The [project page](https://tantansir.github.io/latent-world-model-identifiability/)
 carries video demonstrations that the static figures cannot.
@@ -48,7 +48,6 @@ environment or the probe. Under that gate:
 | `exp/e003_motion/` | Motion channel, flow sensor, λ sweep, attribute-matrix constructions, CEM planning |
 | `exp/e005_patchtok/` | Patch-token architecture variant |
 | `exp/e010_rh20t/` | Real-robot pipeline: RH20T preprocessing, training, evaluation, joint cross-embodiment training |
-| `paper/arxiv/` | Preprint sources, the compiled PDF, and the scripts that draw every figure |
 | `docs/` | Project page, its video assets, and the scripts that generate them |
 
 Every `results/*.json` in `exp/` is a completed run: probe R², certificates,
@@ -86,16 +85,10 @@ the simulator itself.
 The real-robot data is [RH20T](https://rh20t.github.io/); this work uses
 configurations 1 (Flexiv) and 7 (KUKA).
 
-## Figures and videos
+## Project-page videos
 
 ```bash
-cd paper/arxiv                # every figure in the paper
-python make_setup.py          # environment, sensor streams, variant family
-python make_figs.py           # map, targets, lambda, scale, ledger, planning
-python make_pairs.py          # matched pairs: same pixels, different physics
-python make_qual.py kuka      # real-robot filmstrip (needs checkpoints)
-
-cd docs/assets                # the project page's clips
+cd docs/assets
 python make_pokeworld_videos.py
 python make_plan_videos.py
 python make_realrobot_video.py kuka
@@ -104,12 +97,16 @@ python make_realrobot_video.py kuka
 ## Citation
 
 ```bibtex
-@article{tan2026identifiability,
-  title   = {What Can Latent World Models Know? Physical Parameter
-             Identifiability in Multimodal Predictive Representations},
-  author  = {Tan, Kaizhen and Xu, Xin and Tao, Siru and Li, Yixiao and
-             Hong, Hanzhe and Feng, Yang and Du, Heqing},
-  year    = {2026}
+@misc{tan2026identifiability,
+  title         = {What Can Latent World Models Know? Physical Parameter
+                   Identifiability in Multimodal Predictive Representations},
+  author        = {Tan, Kaizhen and Xu, Xin and Tao, Siru and Li, Yixiao and
+                   Hong, Hanzhe and Feng, Yang and Du, Heqing},
+  year          = {2026},
+  eprint        = {2607.27017},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  url           = {https://arxiv.org/abs/2607.27017}
 }
 ```
 
