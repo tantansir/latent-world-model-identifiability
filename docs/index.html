@@ -67,15 +67,17 @@
     pushes objects whose mass, drag, and contact stiffness vary across episodes while
     remaining visually identical. We first measure parameter recovery from raw
     observation sequences, then train matched action-conditioned world models.
-    Predicting touch makes contact stiffness decodable, while providing touch only as an
-    input does not. Across the tested settings, longer-horizon prediction improves
-    linear decoding of position and velocity relative to single-step prediction. Drag is
-    recoverable from raw observations, but has weak linear readout from the learned
-    latent states. Yet the models’ glide forecasts depend systematically on drag.
-    Experiments on RH20T reproduce the same input–target dependence on real multimodal
-    robot data. Together, these results show that observations, prediction targets, and
-    prediction horizons shape both which physical quantities are accessible in latent
-    states and how they affect future predictions.</p>
+    Prediction targets strongly affect how well physical parameters can be decoded. For
+    example, contact stiffness becomes decodable when touch is predicted, while
+    providing touch only as an input does not. Across the tested settings,
+    longer-horizon prediction improves linear estimation of position and velocity from
+    learned representations relative to single-step prediction. Drag is recoverable from
+    raw observations, but has weak linear readout from the learned latent states. Yet
+    the models’ glide forecasts depend systematically on drag. Experiments on RH20T
+    reproduce the same input–target dependence on real multimodal robot data. Together,
+    these results show that observations, prediction targets, and prediction horizons
+    shape both which physical quantities are accessible in latent states and how they
+    affect future predictions.</p>
   </div>
 </section>
 
