@@ -59,24 +59,23 @@
 <section class="band">
   <div class="wrap">
     <h2 class="centered">Abstract</h2>
-    <p class="prose">A central premise of latent world models is that predicting the future
-    encourages representations to internalize the physics of their environment. We
-    ask which physical quantities are accessible in learned latent states, what
-    affects their readout, and how those quantities relate to the model’s predictions.
-    We present <span class="sc">PokeWorld</span>, a simulated environment in which a robot
-    finger pushes objects whose mass, drag, and contact stiffness vary across episodes
-    while remaining visually identical. We first measure parameter recovery from raw
+    <p class="prose">A central premise of latent world models is that predicting the future encourages
+    representations to internalize the physics of their environment. We ask which
+    physical quantities are accessible in learned latent states, how this depends on
+    training, and how those quantities relate to the model’s predictions. We present
+    <span class="sc">PokeWorld</span>, a simulated environment in which a robot finger
+    pushes objects whose mass, drag, and contact stiffness vary across episodes while
+    remaining visually identical. We first measure parameter recovery from raw
     observation sequences, then train matched action-conditioned world models.
-    Prediction targets strongly affect physical-parameter readout. For example,
-    contact stiffness becomes decodable when touch is predicted, while providing
-    touch only as an input does not. Across the tested settings, longer-horizon
-    prediction increases position and velocity readout relative to single-step
-    prediction. Drag is recoverable from raw observations, but has weak linear readout
-    from the learned latent states. Yet the models’ glide forecasts depend
-    systematically on drag. Experiments on RH20T reproduce the same input–target
-    dependence on real multimodal robot data. Together, these results show that
-    observations, prediction targets, and prediction horizons shape both which physical
-    quantities are accessible in latent states and how they affect future predictions.</p>
+    Predicting touch makes contact stiffness decodable, while providing touch only as an
+    input does not. Across the tested settings, longer-horizon prediction improves
+    linear decoding of position and velocity relative to single-step prediction. Drag is
+    recoverable from raw observations, but has weak linear readout from the learned
+    latent states. Yet the models’ glide forecasts depend systematically on drag.
+    Experiments on RH20T reproduce the same input–target dependence on real multimodal
+    robot data. Together, these results show that observations, prediction targets, and
+    prediction horizons shape both which physical quantities are accessible in latent
+    states and how they affect future predictions.</p>
   </div>
 </section>
 
