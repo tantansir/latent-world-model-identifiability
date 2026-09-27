@@ -1,4 +1,5 @@
-"""Passthrough-immune force metric: FUTURE force prediction.
+"""Legacy direct-head force evaluation with the original preprocessing.
+For the current Tables 4 and 16, use eval_futforce_fair.py.
 Frame-level force readout is bounded by input passthrough (RAND control), but
 forecasting force at t+Delta under known actions requires dynamics knowledge a
 random encoder cannot have. Evaluates head_touch (Delta=1) and
@@ -11,7 +12,7 @@ import torch
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
-import train as TR
+import train_legacy as TR
 from model import XJEPA
 
 device = "cuda"

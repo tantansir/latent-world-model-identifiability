@@ -2,7 +2,7 @@
 out of the frozen latent, drawn against the wrist sensor as the clip plays.
 
 Usage: python make_realrobot_video.py [kuka|cfg1]
-Mirrors the probe protocol of paper/iclr2026/make_qual.py.
+Mirrors the probe protocol of paper/figures/make_qual.py.
 """
 import os
 import pathlib
@@ -28,7 +28,7 @@ import matplotlib                                                # noqa: E402
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt                                  # noqa: E402
 
-import train as TR                                               # noqa: E402
+import train_legacy as TR                                        # noqa: E402
 from model import XJEPA                                          # noqa: E402
 
 plt.rcParams.update({"font.family": "sans-serif",

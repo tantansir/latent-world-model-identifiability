@@ -1,0 +1,8 @@
+{
+ "n_windows": 2480,
+ "structured, image-derived speed": 0.9629924411614219,
+ "structured, simulator speed": 0.9999156594276428,
+ "GRU, VFX inputs (image-derived)": 0.9893577236807014,
+ "GRU, simulator object state": 0.9974485191199857,
+ "GRU, V inputs (image-derived object trajectory, actions)": 0.9947096042172544
+}

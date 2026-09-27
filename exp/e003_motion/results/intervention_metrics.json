@@ -1,0 +1,454 @@
+{
+  "metrics": {
+    "func_cf_VFX_s0_l0.02_ac": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s0_l0.02_ac.npz",
+      "mass_action_effect_relative_error": 0.5440673082905366
+    },
+    "func_cf_VFX_s0_l0.02_ac_ih": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s0_l0.02_ac_ih.npz",
+      "mass_action_effect_relative_error": 0.8492340939982063
+    },
+    "func_cf_VFX_s0_l0.02_ac_ih_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s0_l0.02_ac_ih_release.npz",
+      "drag_release_slope_ratio": -0.00621470144906253
+    },
+    "func_cf_VFX_s0_l0.02_ac_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s0_l0.02_ac_release.npz",
+      "drag_release_slope_ratio": -0.01262637231393538
+    },
+    "func_cf_VFX_s0_l0.02_oi_ac_ih": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s0_l0.02_oi_ac_ih.npz",
+      "mass_action_effect_relative_error": 0.6393451822379438
+    },
+    "func_cf_VFX_s0_l0.02_oi_ac_ih_fh": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s0_l0.02_oi_ac_ih_fh.npz",
+      "mass_action_effect_relative_error": 0.7454869632747798
+    },
+    "func_cf_VFX_s0_l0.02_oi_ac_ih_fh_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s0_l0.02_oi_ac_ih_fh_release.npz",
+      "drag_release_slope_ratio": 0.09904925822726204
+    },
+    "func_cf_VFX_s0_l0.02_oi_ac_ih_fhh": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s0_l0.02_oi_ac_ih_fhh.npz",
+      "mass_action_effect_relative_error": 0.7031965388563767
+    },
+    "func_cf_VFX_s0_l0.02_oi_ac_ih_fhh_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s0_l0.02_oi_ac_ih_fhh_release.npz",
+      "drag_release_slope_ratio": 0.09083384791423904
+    },
+    "func_cf_VFX_s0_l0.02_oi_ac_ih_fhr": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s0_l0.02_oi_ac_ih_fhr.npz",
+      "mass_action_effect_relative_error": 0.7491071369275283
+    },
+    "func_cf_VFX_s0_l0.02_oi_ac_ih_fhr_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s0_l0.02_oi_ac_ih_fhr_release.npz",
+      "drag_release_slope_ratio": 0.08471782524435466
+    },
+    "func_cf_VFX_s0_l0.02_oi_ac_ih_fht": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s0_l0.02_oi_ac_ih_fht.npz",
+      "mass_action_effect_relative_error": 0.6815576134235612
+    },
+    "func_cf_VFX_s0_l0.02_oi_ac_ih_fht_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s0_l0.02_oi_ac_ih_fht_release.npz",
+      "drag_release_slope_ratio": 0.08649631502545617
+    },
+    "func_cf_VFX_s0_l0.02_oi_ac_ih_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s0_l0.02_oi_ac_ih_release.npz",
+      "drag_release_slope_ratio": 0.0635508535540784
+    },
+    "func_cf_VFX_s0_l0.02_or_oi_ac_ih": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s0_l0.02_or_oi_ac_ih.npz",
+      "mass_action_effect_relative_error": 0.6276544322786018
+    },
+    "func_cf_VFX_s0_l0.02_or_oi_ac_ih_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s0_l0.02_or_oi_ac_ih_release.npz",
+      "drag_release_slope_ratio": 0.5388166030530736
+    },
+    "func_cf_VFX_s0_l0.02_sid_ac_ih": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s0_l0.02_sid_ac_ih.npz",
+      "mass_action_effect_relative_error": 1.0057367173048204
+    },
+    "func_cf_VFX_s0_l0.02_sid_ac_ih_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s0_l0.02_sid_ac_ih_release.npz",
+      "drag_release_slope_ratio": -0.0002616087827490107
+    },
+    "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_ac_ih": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_ac_ih.npz",
+      "mass_action_effect_relative_error": 0.7308796788393572
+    },
+    "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_ac_ih_fh": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_ac_ih_fh.npz",
+      "mass_action_effect_relative_error": 0.6761981039765137
+    },
+    "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_ac_ih_fh_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_ac_ih_fh_release.npz",
+      "drag_release_slope_ratio": 0.1353465112582556
+    },
+    "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_ac_ih_fhh": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_ac_ih_fhh.npz",
+      "mass_action_effect_relative_error": 0.7039360567964493
+    },
+    "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_ac_ih_fhh_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_ac_ih_fhh_release.npz",
+      "drag_release_slope_ratio": 0.12794181810616137
+    },
+    "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_ac_ih_fhr": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_ac_ih_fhr.npz",
+      "mass_action_effect_relative_error": 0.6874358147149939
+    },
+    "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_ac_ih_fhr_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_ac_ih_fhr_release.npz",
+      "drag_release_slope_ratio": 0.12145171639107565
+    },
+    "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_ac_ih_fht": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_ac_ih_fht.npz",
+      "mass_action_effect_relative_error": 0.6955562505710079
+    },
+    "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_ac_ih_fht_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_ac_ih_fht_release.npz",
+      "drag_release_slope_ratio": 0.16838869010782778
+    },
+    "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_ac_ih_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_ac_ih_release.npz",
+      "drag_release_slope_ratio": 0.10084798235495908
+    },
+    "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_sc_ac_ih": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_sc_ac_ih.npz",
+      "mass_action_effect_relative_error": 0.6582630482353432
+    },
+    "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_sc_ac_ih_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s0_l0.02_vr_oi_kr_mr_sc_ac_ih_release.npz",
+      "drag_release_slope_ratio": 0.08005635817164487
+    },
+    "func_cf_VFX_s1_l0.02_ac": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s1_l0.02_ac.npz",
+      "mass_action_effect_relative_error": 0.5237668378716672
+    },
+    "func_cf_VFX_s1_l0.02_ac_ih": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s1_l0.02_ac_ih.npz",
+      "mass_action_effect_relative_error": 0.7984750451215541
+    },
+    "func_cf_VFX_s1_l0.02_ac_ih_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s1_l0.02_ac_ih_release.npz",
+      "drag_release_slope_ratio": -0.004109988957349471
+    },
+    "func_cf_VFX_s1_l0.02_ac_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s1_l0.02_ac_release.npz",
+      "drag_release_slope_ratio": -0.03129439548828266
+    },
+    "func_cf_VFX_s1_l0.02_oi_ac_ih": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s1_l0.02_oi_ac_ih.npz",
+      "mass_action_effect_relative_error": 0.7666625752559849
+    },
+    "func_cf_VFX_s1_l0.02_oi_ac_ih_fh": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s1_l0.02_oi_ac_ih_fh.npz",
+      "mass_action_effect_relative_error": 0.6454622823585763
+    },
+    "func_cf_VFX_s1_l0.02_oi_ac_ih_fh_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s1_l0.02_oi_ac_ih_fh_release.npz",
+      "drag_release_slope_ratio": 0.10179463862606745
+    },
+    "func_cf_VFX_s1_l0.02_oi_ac_ih_fhh": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s1_l0.02_oi_ac_ih_fhh.npz",
+      "mass_action_effect_relative_error": 0.6760016006829211
+    },
+    "func_cf_VFX_s1_l0.02_oi_ac_ih_fhh_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s1_l0.02_oi_ac_ih_fhh_release.npz",
+      "drag_release_slope_ratio": 0.09321373475785123
+    },
+    "func_cf_VFX_s1_l0.02_oi_ac_ih_fhr": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s1_l0.02_oi_ac_ih_fhr.npz",
+      "mass_action_effect_relative_error": 0.6522546386693943
+    },
+    "func_cf_VFX_s1_l0.02_oi_ac_ih_fhr_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s1_l0.02_oi_ac_ih_fhr_release.npz",
+      "drag_release_slope_ratio": 0.10501345791214597
+    },
+    "func_cf_VFX_s1_l0.02_oi_ac_ih_fht": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s1_l0.02_oi_ac_ih_fht.npz",
+      "mass_action_effect_relative_error": 0.6490385141890727
+    },
+    "func_cf_VFX_s1_l0.02_oi_ac_ih_fht_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s1_l0.02_oi_ac_ih_fht_release.npz",
+      "drag_release_slope_ratio": 0.06190333446607193
+    },
+    "func_cf_VFX_s1_l0.02_oi_ac_ih_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s1_l0.02_oi_ac_ih_release.npz",
+      "drag_release_slope_ratio": 0.10209180579456531
+    },
+    "func_cf_VFX_s1_l0.02_or_oi_ac_ih": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s1_l0.02_or_oi_ac_ih.npz",
+      "mass_action_effect_relative_error": 0.6898156009483585
+    },
+    "func_cf_VFX_s1_l0.02_or_oi_ac_ih_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s1_l0.02_or_oi_ac_ih_release.npz",
+      "drag_release_slope_ratio": 0.5532422760608279
+    },
+    "func_cf_VFX_s1_l0.02_sid_ac_ih": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s1_l0.02_sid_ac_ih.npz",
+      "mass_action_effect_relative_error": 1.0088280107645498
+    },
+    "func_cf_VFX_s1_l0.02_sid_ac_ih_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s1_l0.02_sid_ac_ih_release.npz",
+      "drag_release_slope_ratio": 0.0002379042722784988
+    },
+    "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_ac_ih": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_ac_ih.npz",
+      "mass_action_effect_relative_error": 0.7521749842014543
+    },
+    "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_ac_ih_fh": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_ac_ih_fh.npz",
+      "mass_action_effect_relative_error": 0.6393271128625604
+    },
+    "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_ac_ih_fh_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_ac_ih_fh_release.npz",
+      "drag_release_slope_ratio": 0.13457242996305083
+    },
+    "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_ac_ih_fhh": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_ac_ih_fhh.npz",
+      "mass_action_effect_relative_error": 0.7455577537397828
+    },
+    "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_ac_ih_fhh_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_ac_ih_fhh_release.npz",
+      "drag_release_slope_ratio": 0.11120586302334298
+    },
+    "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_ac_ih_fhr": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_ac_ih_fhr.npz",
+      "mass_action_effect_relative_error": 0.6956855773698007
+    },
+    "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_ac_ih_fhr_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_ac_ih_fhr_release.npz",
+      "drag_release_slope_ratio": 0.11747122211035449
+    },
+    "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_ac_ih_fht": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_ac_ih_fht.npz",
+      "mass_action_effect_relative_error": 0.7035383995700975
+    },
+    "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_ac_ih_fht_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_ac_ih_fht_release.npz",
+      "drag_release_slope_ratio": 0.10139025455786436
+    },
+    "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_ac_ih_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_ac_ih_release.npz",
+      "drag_release_slope_ratio": 0.1515888202991108
+    },
+    "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_sc_ac_ih": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_sc_ac_ih.npz",
+      "mass_action_effect_relative_error": 0.6269174285544695
+    },
+    "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_sc_ac_ih_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s1_l0.02_vr_oi_kr_mr_sc_ac_ih_release.npz",
+      "drag_release_slope_ratio": 0.10808153043974482
+    },
+    "func_cf_VFX_s2_l0.02_ac": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s2_l0.02_ac.npz",
+      "mass_action_effect_relative_error": 0.5422566530080037
+    },
+    "func_cf_VFX_s2_l0.02_ac_ih": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s2_l0.02_ac_ih.npz",
+      "mass_action_effect_relative_error": 0.8966687870280734
+    },
+    "func_cf_VFX_s2_l0.02_ac_ih_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s2_l0.02_ac_ih_release.npz",
+      "drag_release_slope_ratio": -0.03234180046067995
+    },
+    "func_cf_VFX_s2_l0.02_ac_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s2_l0.02_ac_release.npz",
+      "drag_release_slope_ratio": -0.05772344528314065
+    },
+    "func_cf_VFX_s2_l0.02_oi_ac_ih": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s2_l0.02_oi_ac_ih.npz",
+      "mass_action_effect_relative_error": 0.6407657265791884
+    },
+    "func_cf_VFX_s2_l0.02_oi_ac_ih_fh": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s2_l0.02_oi_ac_ih_fh.npz",
+      "mass_action_effect_relative_error": 0.6543724431373701
+    },
+    "func_cf_VFX_s2_l0.02_oi_ac_ih_fh_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s2_l0.02_oi_ac_ih_fh_release.npz",
+      "drag_release_slope_ratio": 0.09317204671437812
+    },
+    "func_cf_VFX_s2_l0.02_oi_ac_ih_fhh": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s2_l0.02_oi_ac_ih_fhh.npz",
+      "mass_action_effect_relative_error": 0.6363199533147746
+    },
+    "func_cf_VFX_s2_l0.02_oi_ac_ih_fhh_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s2_l0.02_oi_ac_ih_fhh_release.npz",
+      "drag_release_slope_ratio": 0.0826808661960991
+    },
+    "func_cf_VFX_s2_l0.02_oi_ac_ih_fhr": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s2_l0.02_oi_ac_ih_fhr.npz",
+      "mass_action_effect_relative_error": 0.6174554880710386
+    },
+    "func_cf_VFX_s2_l0.02_oi_ac_ih_fhr_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s2_l0.02_oi_ac_ih_fhr_release.npz",
+      "drag_release_slope_ratio": 0.08491067718763434
+    },
+    "func_cf_VFX_s2_l0.02_oi_ac_ih_fht": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s2_l0.02_oi_ac_ih_fht.npz",
+      "mass_action_effect_relative_error": 0.6411043382226155
+    },
+    "func_cf_VFX_s2_l0.02_oi_ac_ih_fht_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s2_l0.02_oi_ac_ih_fht_release.npz",
+      "drag_release_slope_ratio": 0.05352932555009955
+    },
+    "func_cf_VFX_s2_l0.02_oi_ac_ih_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s2_l0.02_oi_ac_ih_release.npz",
+      "drag_release_slope_ratio": 0.052770771649413184
+    },
+    "func_cf_VFX_s2_l0.02_or_oi_ac_ih": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s2_l0.02_or_oi_ac_ih.npz",
+      "mass_action_effect_relative_error": 0.6213636197315496
+    },
+    "func_cf_VFX_s2_l0.02_or_oi_ac_ih_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s2_l0.02_or_oi_ac_ih_release.npz",
+      "drag_release_slope_ratio": 0.5609946455890293
+    },
+    "func_cf_VFX_s2_l0.02_sid_ac_ih": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s2_l0.02_sid_ac_ih.npz",
+      "mass_action_effect_relative_error": 0.885181492550031
+    },
+    "func_cf_VFX_s2_l0.02_sid_ac_ih_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s2_l0.02_sid_ac_ih_release.npz",
+      "drag_release_slope_ratio": 0.008101348095071141
+    },
+    "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_ac_ih": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_ac_ih.npz",
+      "mass_action_effect_relative_error": 0.6887520131226214
+    },
+    "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_ac_ih_fh": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_ac_ih_fh.npz",
+      "mass_action_effect_relative_error": 0.6663943352511721
+    },
+    "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_ac_ih_fh_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_ac_ih_fh_release.npz",
+      "drag_release_slope_ratio": 0.1303314251779443
+    },
+    "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_ac_ih_fhh": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_ac_ih_fhh.npz",
+      "mass_action_effect_relative_error": 0.6761321355200165
+    },
+    "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_ac_ih_fhh_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_ac_ih_fhh_release.npz",
+      "drag_release_slope_ratio": 0.116165202985727
+    },
+    "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_ac_ih_fhr": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_ac_ih_fhr.npz",
+      "mass_action_effect_relative_error": 0.635083361567033
+    },
+    "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_ac_ih_fhr_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_ac_ih_fhr_release.npz",
+      "drag_release_slope_ratio": 0.1109310801951423
+    },
+    "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_ac_ih_fht": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_ac_ih_fht.npz",
+      "mass_action_effect_relative_error": 0.6525438409230327
+    },
+    "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_ac_ih_fht_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_ac_ih_fht_release.npz",
+      "drag_release_slope_ratio": 0.08870242254195629
+    },
+    "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_ac_ih_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_ac_ih_release.npz",
+      "drag_release_slope_ratio": 0.12243327337553157
+    },
+    "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_sc_ac_ih": {
+      "n_windows": 1788,
+      "source": "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_sc_ac_ih.npz",
+      "mass_action_effect_relative_error": 0.7631496832640362
+    },
+    "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_sc_ac_ih_release": {
+      "n_windows": 1800,
+      "source": "func_cf_VFX_s2_l0.02_vr_oi_kr_mr_sc_ac_ih_release.npz",
+      "drag_release_slope_ratio": 0.11025121097996549
+    }
+  }
+}

@@ -1,4 +1,4 @@
-"""Train X-JEPA on RH20T cfg7 pilot and evaluate observation-space metrics:
+"""Train X-JEPA on RH20T with training-only clipping and evaluate:
   (a) vision-only latent -> current force/torque readout (Kepler contrast)
   (b) multi-horizon ee-position prediction vs static baseline
   (c) contact-onset anticipation AUC (|F|>10N within next 4 steps)
@@ -30,11 +30,31 @@ def _clean(a):
     """Real sensor streams contain glitch spikes (>1e19 on cfg1) that overflow
     float32 stats and blow up whitening/ridge; clip per-column to robust range."""
     a = np.nan_to_num(a.astype(np.float64), posinf=0.0, neginf=0.0)
-    lo = np.percentile(a, 0.1, axis=0)
-    hi = np.percentile(a, 99.9, axis=0)
+    # clipping thresholds from TRAINING episodes only (the original computed them on all
+    # data including held-out tasks: a preprocessing leak flagged in the 2026-09-14 review)
+    lo = np.percentile(a[_TRAIN_ROWS], 0.1, axis=0)
+    hi = np.percentile(a[_TRAIN_ROWS], 99.9, axis=0)
     return np.clip(a, lo, hi).astype(np.float32)
 
 
+# data-scale subsets are fixed here, before any statistic is computed, so that clipping and whitening use only the
+# subset's own episodes. E010_NEP selects a task-stratified subset of the training split (seeded, shared by all arms).
+_NEP = int(os.environ.get("E010_NEP", "0") or 0)
+if _NEP:
+    _task = _ix["task"] if "task" in _ix.files else None
+    _tr = np.array(SPLITS["train"]); _rs = np.random.default_rng(1234)
+    if _task is not None:
+        _t = _task[_tr]; _keep = []
+        for _u in np.unique(_t):
+            _idx = _tr[_t == _u]; _n = max(1, int(round(len(_idx) * _NEP / len(_tr))))
+            _keep.append(_rs.permutation(_idx)[:_n])
+        _keep = np.concatenate(_keep)
+        _keep = _rs.permutation(_keep)[:_NEP] if len(_keep) > _NEP else _keep
+    else:
+        _keep = _rs.permutation(_tr)[:_NEP]
+    SPLITS["train"] = np.sort(_keep)
+    print(f"[E010_NEP] training subset of {len(SPLITS['train'])} episodes (task-stratified: {_task is not None})", flush=True)
+_TRAIN_ROWS = np.concatenate([np.arange(START[e], START[e] + LENGTH[e]) for e in SPLITS["train"]])
 STATE, TOUCH, ACTION = (_clean(_sen[k]) for k in ("state", "touch", "action"))
 IMG = np.load(DATA / "images.npy", mmap_mode="r")
 IMG2 = None      # second-view memmap, set in main() with --cam2
@@ -202,13 +222,13 @@ def main():
     ap.add_argument("--eval_only", action="store_true")
     args = ap.parse_args()
     if args.nep:
-        SPLITS["train"] = SPLITS["train"][:args.nep]
+        assert _NEP == args.nep, "set E010_NEP=<n> in the environment so that clipping statistics use the subset (see top of file)"
 
     torch.manual_seed(args.seed)
     device = "cuda"
     RESULTS.mkdir(exist_ok=True)
     stats = whiten_stats()
-    tag = f"{args.variant}_s{args.seed}{TAG_SUFFIX}"
+    tag = f"{args.variant}_s{args.seed}{TAG_SUFFIX}_tc"   # _tc: train-only clipping thresholds
     in_ch = 2
     if args.cam2:
         global IMG2

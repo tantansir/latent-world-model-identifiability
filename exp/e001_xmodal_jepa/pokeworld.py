@@ -33,9 +33,14 @@ V_CAP = 3.0
 DATA_DIR = pathlib.Path(__file__).parent / "data"
 
 
-def sample_props(n, rng):
+MU_G = 1.0   # Coulomb law: deceleration magnitude mu * MU_G (arena units / s^2); the props[:,1] slot holds mu
+
+
+def sample_props(n, rng, law="drag"):
     m = np.exp(rng.uniform(np.log(0.5), np.log(3.0), n))
-    gamma = rng.uniform(0.5, 4.0, n)
+    # drag: v' = -gamma v (rate, 1/s). coulomb: v' = -mu*MU_G v/|v| (constant deceleration); mu in [0.25, 2.0]
+    # gives stopping times comparable to the drag range for launch speeds 0.3-1.2
+    gamma = rng.uniform(0.5, 4.0, n) if law == "drag" else rng.uniform(0.25, 2.0, n)
     k = np.exp(rng.uniform(np.log(500.0), np.log(6000.0), n))
     return np.stack([m, gamma, k], 1).astype(np.float64)
 
@@ -71,13 +76,13 @@ def _wall_force(p, v, r, k_wall):
 
 
 def simulate(n_ep, T, seed, glide_frac=0.0, drift=False, gain=False, mgain=False,
-             bias_range=0.5):
+             bias_range=0.5, law="drag", strike_frac=0.0, policy="closed"):
     """Vectorized simulation of n_ep episodes for T steps. glide_frac episodes
     are pure-glide: finger parked in a corner with weak drift, object launched
     fast - supplies the gamma-informative gradient mass that pursuit-heavy
     data starves (e008 data-coverage hypothesis)."""
     rng = np.random.default_rng(seed)
-    props = sample_props(n_ep, rng)
+    props = sample_props(n_ep, rng, law=law)
     if drift:
         # fix gamma so the slow-LINEAR drift is not confounded with per-episode
         # drag in dv/dt = a_d - gamma*v (certificate gate caught this: with
@@ -127,6 +132,20 @@ def simulate(n_ep, T, seed, glide_frac=0.0, drift=False, gain=False, mgain=False
     a = np.zeros((n_ep, 2))
     mode = rng.integers(0, 3, n_ep)          # 0=pursuit, 1=strike, 2=OU, 3=glide
     glide_ep = rng.random(n_ep) < glide_frac
+    # strike episodes (open-loop functional tests): object at rest, finger at distance 0.25-0.40, action = a fixed
+    # unit push toward the object's initial position for the whole episode (+ small noise). The future action window
+    # then carries no information about the hidden parameters, unlike the closed-loop pursuit policy.
+    strike_ep = (rng.random(n_ep) < strike_frac) & ~glide_ep
+    a_fixed = np.zeros((n_ep, 2))
+    if strike_ep.any():
+        mode[strike_ep] = 4
+        ns = strike_ep.sum()
+        v_o[strike_ep] = 0.0
+        p_o[strike_ep] = rng.uniform(0.3, 0.7, (ns, 2))
+        ang_s = rng.uniform(0, 2 * np.pi, ns)
+        dist_s = rng.uniform(0.25, 0.40, ns)
+        p_f[strike_ep] = p_o[strike_ep] - dist_s[:, None] * np.stack([np.cos(ang_s), np.sin(ang_s)], 1)
+        a_fixed[strike_ep] = np.stack([np.cos(ang_s), np.sin(ang_s)], 1) * rng.uniform(0.6, 1.0, ns)[:, None]
     if glide_ep.any():
         mode[glide_ep] = 3
         ng = glide_ep.sum()
@@ -138,6 +157,12 @@ def simulate(n_ep, T, seed, glide_frac=0.0, drift=False, gain=False, mgain=False
         v_o[glide_ep, 0] = spd_g * np.cos(ang_g)
         v_o[glide_ep, 1] = spd_g * np.sin(ang_g)
     phase_off = rng.integers(0, 10, n_ep)
+    # policy="blind": every 12 frames the finger picks a push direction from the object's position at that moment
+    # (+ noise), then holds it open-loop (8 frames approach, 4 frames retreat). Within a 16-step horizon the action
+    # window is therefore nearly predetermined and carries little information about the object's response - the
+    # closed-loop pursuit/strike policy otherwise lets a predictor read the hidden parameters off the future actions.
+    blind = policy == "blind"
+    a_hold = np.zeros((n_ep, 2))
 
     finger_traj = np.zeros((T, n_ep, 4), np.float32)
     obj_traj = np.zeros((T, n_ep, 4), np.float32)
@@ -146,7 +171,7 @@ def simulate(n_ep, T, seed, glide_frac=0.0, drift=False, gain=False, mgain=False
 
     dt_s = DT / SUBSTEPS
     for t in range(T):
-        toggle = (rng.random(n_ep) < 0.03) & (mode != 3)
+        toggle = (rng.random(n_ep) < 0.03) & (mode != 3) & (mode != 4)
         mode = np.where(toggle, rng.integers(0, 3, n_ep), mode)
         noise = rng.normal(0, 1, (n_ep, 2))
         to_obj = p_o - p_f
@@ -158,6 +183,14 @@ def simulate(n_ep, T, seed, glide_frac=0.0, drift=False, gain=False, mgain=False
         a = np.where(mode[:, None] == 0, a_pursuit,
                      np.where(mode[:, None] == 1, a_strike,
                               np.where(mode[:, None] == 2, a_ou, 0.15 * noise)))
+        a = np.where(mode[:, None] == 4, a_fixed + 0.05 * noise, a)
+        if blind:
+            ph = (t + phase_off) % 12
+            if t == 0 or True:
+                new = (ph == 0) | (t == 0)
+                a_hold = np.where(new[:, None], to_obj * rng.uniform(0.6, 1.0, (n_ep, 1)) + 0.25 * noise, a_hold)
+            a_blind = np.where((ph < 8)[:, None], a_hold, -0.6 * a_hold) + 0.1 * noise
+            a = np.where((mode[:, None] != 3) & (mode[:, None] != 4), a_blind, a)
         a = np.clip(a, -1, 1)
         act_traj[t] = a
 
@@ -168,7 +201,13 @@ def simulate(n_ep, T, seed, glide_frac=0.0, drift=False, gain=False, mgain=False
         m_red = m_o * M_FINGER / (m_o + M_FINGER)
         for _ in range(SUBSTEPS):
             f_on_obj = _contact_force(p_f, p_o, v_f, v_o, R_FINGER + R_OBJ, k_o, m_red)
-            f_obj = (f_on_obj - gamma_o[:, None] * m_o[:, None] * v_o
+            if law == "coulomb":
+                sp_now = np.linalg.norm(v_o, axis=1, keepdims=True)
+                mag = np.minimum(gamma_o[:, None] * MU_G, sp_now / dt_s)   # cannot reverse the velocity within a substep
+                f_drag = -mag * m_o[:, None] * v_o / np.maximum(sp_now, 1e-9)
+            else:
+                f_drag = -gamma_o[:, None] * m_o[:, None] * v_o
+            f_obj = (f_on_obj + f_drag
                      + m_o[:, None] * a_d + _wall_force(p_o, v_o, R_OBJ, K_WALL))
             f_fin = (g_act[:, None] * F_MAX * a + b_bias - f_on_obj
                      - GAMMA_FINGER * M_FINGER * v_f
@@ -232,10 +271,10 @@ def render(finger, obj, chunk=512):
 
 
 def generate_split(name, n_ep, seed, glide_frac=0.0, drift=False, gain=False,
-                   mgain=False, bias_range=0.5):
+                   mgain=False, bias_range=0.5, law="drag", policy="closed"):
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     data = simulate(n_ep, T_EP, seed, glide_frac=glide_frac, drift=drift, gain=gain,
-                    mgain=mgain, bias_range=bias_range)
+                    mgain=mgain, bias_range=bias_range, law=law, policy=policy)
     img = render(data["finger"], data["obj"])
     np.save(DATA_DIR / f"{name}_img.npy", img)
     np.savez(DATA_DIR / f"{name}_state.npz", **data)
@@ -271,6 +310,14 @@ if __name__ == "__main__":
         generate_split("val6", 400, 61, glide_frac=0.3, mgain=True)
         generate_split("probe6_tr", 1600, 62, glide_frac=0.3, mgain=True)
         generate_split("probe6_te", 800, 63, glide_frac=0.3, mgain=True)
+    elif len(_sys.argv) > 1 and _sys.argv[1] == "coulomb":
+        for nm, n, sd in (("trainC", 4000, 90), ("valC", 400, 91), ("probeC_tr", 1600, 92), ("probeC_te", 800, 93)):
+            generate_split(nm, n, sd, law="coulomb")
+    elif len(_sys.argv) > 1 and _sys.argv[1] == "blind":
+        for nm, n, sd in (("trainB", 4000, 110), ("valB", 400, 111), ("probeB_tr", 1600, 112), ("probeB_te", 800, 113)):
+            generate_split(nm, n, sd, policy="blind")
+    elif len(_sys.argv) > 1 and _sys.argv[1] == "big":
+        generate_split("train16k", 16000, 100)
     elif len(_sys.argv) > 1 and _sys.argv[1] == "poorcontact":
         generate_split("train4", 4000, 40, glide_frac=0.95)
         generate_split("val4", 400, 41, glide_frac=0.95)

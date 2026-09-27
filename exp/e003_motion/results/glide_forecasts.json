@@ -1,0 +1,228 @@
+{
+  "evaluation_seed": 778,
+  "glide_fraction": 1.0,
+  "models": [
+    {
+      "tag": "VFX_s0_l0.02_ac",
+      "seed": 0,
+      "forecast_log": "gl_fc_ac_s0_18470084.out",
+      "readout_log": "gl_rd_ac_s0_18470085.out",
+      "gamma_bins": [
+        0.75,
+        1.25,
+        1.75,
+        2.25,
+        2.75,
+        3.25,
+        3.75
+      ],
+      "forecast_factors": [
+        0.363,
+        0.325,
+        0.205,
+        0.182,
+        0.132,
+        0.093,
+        0.063
+      ],
+      "true_factors": [
+        0.604,
+        0.508,
+        0.436,
+        0.396,
+        0.314,
+        0.284,
+        0.259
+      ],
+      "bin_mean_slope": 0.89,
+      "partial_slope": 1.13,
+      "partial_slope_se": 0.08,
+      "glide_readout_r2": 0.499
+    },
+    {
+      "tag": "VFX_s1_l0.02_ac",
+      "seed": 1,
+      "forecast_log": "gl_fc_ac_s1_18470086.out",
+      "readout_log": "gl_rd_ac_s1_18470087.out",
+      "gamma_bins": [
+        0.75,
+        1.25,
+        1.75,
+        2.25,
+        2.75,
+        3.25,
+        3.75
+      ],
+      "forecast_factors": [
+        0.402,
+        0.327,
+        0.18,
+        0.16,
+        0.087,
+        0.03,
+        -0.021
+      ],
+      "true_factors": [
+        0.604,
+        0.508,
+        0.436,
+        0.396,
+        0.314,
+        0.284,
+        0.259
+      ],
+      "bin_mean_slope": 1.21,
+      "partial_slope": 1.5,
+      "partial_slope_se": 0.08,
+      "glide_readout_r2": 0.516
+    },
+    {
+      "tag": "VFX_s2_l0.02_ac",
+      "seed": 2,
+      "forecast_log": "gl_fc_ac_s2_18470088.out",
+      "readout_log": "gl_rd_ac_s2_18470089.out",
+      "gamma_bins": [
+        0.75,
+        1.25,
+        1.75,
+        2.25,
+        2.75,
+        3.25,
+        3.75
+      ],
+      "forecast_factors": [
+        0.351,
+        0.292,
+        0.17,
+        0.135,
+        0.086,
+        0.008,
+        0.015
+      ],
+      "true_factors": [
+        0.604,
+        0.508,
+        0.436,
+        0.396,
+        0.314,
+        0.284,
+        0.259
+      ],
+      "bin_mean_slope": 1.03,
+      "partial_slope": 1.27,
+      "partial_slope_se": 0.08,
+      "glide_readout_r2": 0.488
+    },
+    {
+      "tag": "VFX_s0_l0.02_vr_oi_kr_mr_ac_ih",
+      "seed": 0,
+      "forecast_log": "gl_fc_vr_oi_kr_mr_ac_ih_s0_18470090.out",
+      "readout_log": "gl_rd_vr_oi_kr_mr_ac_ih_s0_18470091.out",
+      "gamma_bins": [
+        0.75,
+        1.25,
+        1.75,
+        2.25,
+        2.75,
+        3.25,
+        3.75
+      ],
+      "forecast_factors": [
+        0.468,
+        0.53,
+        0.64,
+        0.652,
+        0.685,
+        0.762,
+        0.892
+      ],
+      "true_factors": [
+        0.604,
+        0.508,
+        0.436,
+        0.396,
+        0.314,
+        0.284,
+        0.259
+      ],
+      "bin_mean_slope": -1.06,
+      "partial_slope": -1.27,
+      "partial_slope_se": 0.1,
+      "glide_readout_r2": 0.95
+    },
+    {
+      "tag": "VFX_s1_l0.02_vr_oi_kr_mr_ac_ih",
+      "seed": 1,
+      "forecast_log": "gl_fc_vr_oi_kr_mr_ac_ih_s1_18470092.out",
+      "readout_log": "gl_rd_vr_oi_kr_mr_ac_ih_s1_18470093.out",
+      "gamma_bins": [
+        0.75,
+        1.25,
+        1.75,
+        2.25,
+        2.75,
+        3.25,
+        3.75
+      ],
+      "forecast_factors": [
+        0.398,
+        0.547,
+        0.686,
+        0.691,
+        0.717,
+        0.848,
+        0.969
+      ],
+      "true_factors": [
+        0.604,
+        0.508,
+        0.436,
+        0.396,
+        0.314,
+        0.284,
+        0.259
+      ],
+      "bin_mean_slope": -1.42,
+      "partial_slope": -1.76,
+      "partial_slope_se": 0.09,
+      "glide_readout_r2": 0.946
+    },
+    {
+      "tag": "VFX_s2_l0.02_vr_oi_kr_mr_ac_ih",
+      "seed": 2,
+      "forecast_log": "gl_fc_vr_oi_kr_mr_ac_ih_s2_18470094.out",
+      "readout_log": "gl_rd_vr_oi_kr_mr_ac_ih_s2_18470095.out",
+      "gamma_bins": [
+        0.75,
+        1.25,
+        1.75,
+        2.25,
+        2.75,
+        3.25,
+        3.75
+      ],
+      "forecast_factors": [
+        0.34,
+        0.484,
+        0.588,
+        0.593,
+        0.632,
+        0.805,
+        0.847
+      ],
+      "true_factors": [
+        0.604,
+        0.508,
+        0.436,
+        0.396,
+        0.314,
+        0.284,
+        0.259
+      ],
+      "bin_mean_slope": -1.34,
+      "partial_slope": -1.52,
+      "partial_slope_se": 0.12,
+      "glide_readout_r2": 0.945
+    }
+  ]
+}

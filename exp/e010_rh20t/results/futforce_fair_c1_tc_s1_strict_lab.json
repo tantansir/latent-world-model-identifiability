@@ -1,0 +1,62 @@
+{
+ "persist": {
+  "probe_te": 0.2286,
+  "ood": 0.3071
+ },
+ "raw+a": {
+  "probe_te": 0.389,
+  "ood": 0.3123
+ },
+ "raw": {
+  "probe_te": 0.4034,
+  "ood": 0.3817
+ },
+ "rawhist+a": {
+  "probe_te": 0.4221,
+  "ood": 0.4444
+ },
+ "rawGRU": {
+  "probe_te": 0.4433,
+  "ood": 0.4645
+ },
+ "V:h": {
+  "probe_te": -0.0312,
+  "ood": -0.2172
+ },
+ "V:h+a": {
+  "probe_te": 0.0284,
+  "ood": -0.1319
+ },
+ "VX:h": {
+  "probe_te": 0.069,
+  "ood": -0.0594
+ },
+ "VX:h+a": {
+  "probe_te": 0.0811,
+  "ood": -0.0644
+ },
+ "VF:h": {
+  "probe_te": 0.1063,
+  "ood": -0.114
+ },
+ "VF:h+a": {
+  "probe_te": 0.0904,
+  "ood": -0.116
+ },
+ "VFX:h": {
+  "probe_te": 0.4349,
+  "ood": 0.4712
+ },
+ "VFX:h+a": {
+  "probe_te": 0.4444,
+  "ood": 0.4651
+ },
+ "VFX_rand:h": {
+  "probe_te": 0.3675,
+  "ood": 0.3794
+ },
+ "VFX_rand:h+a": {
+  "probe_te": 0.3779,
+  "ood": 0.3584
+ }
+}

@@ -32,8 +32,8 @@ _orig_props = pw.sample_props
 
 def run(props, seed, glide_frac=0.0):
     """One simulation whose episodes all carry the given (m, gamma, k)."""
-    def patched(n, rng):
-        p = _orig_props(n, rng)          # consume the stream identically
+    def patched(n, rng, law="drag"):
+        p = _orig_props(n, rng, law=law) # consume the stream identically
         p[:] = np.asarray(props, float)
         return p
 

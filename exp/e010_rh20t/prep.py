@@ -14,7 +14,7 @@ import torch
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 SRC = pathlib.Path(sys.argv[3]) if len(sys.argv) > 3 else \
-    pathlib.Path(r"C:\Users\Kaizh\Desktop\physical representation\data_rh20t\cfg7")
+    pathlib.Path(__file__).resolve().parents[2] / "data_rh20t" / "cfg7"
 CAM = sys.argv[1] if len(sys.argv) > 1 else "observation.images.cam_037522061512"
 OUT = pathlib.Path(__file__).parent / (sys.argv[2] if len(sys.argv) > 2 else "data")
 OUT.mkdir(parents=True, exist_ok=True)
