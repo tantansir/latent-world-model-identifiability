@@ -2,13 +2,13 @@
 
 **Physical Information in Multimodal Predictive Representations**
 
-**Kaizhen Tan<sup>1,4,*</sup>, Sizhe Xu<sup>1,4,*</sup>, Xin Xu<sup>2</sup>,
+**Kaizhen Tan<sup>1,4,&#42;</sup>, Sizhe Xu<sup>1,4,&#42;</sup>, Xin Xu<sup>2</sup>,
 Siru Tao<sup>2</sup>, Yixiao Li<sup>2</sup>, Hanzhe Hong<sup>2</sup>,
 Yang Feng<sup>3</sup>, Heqing Du<sup>3</sup>, Zhaonan Wang<sup>4</sup>**
 
 <sup>1</sup>New York University · <sup>2</sup>Carnegie Mellon University ·
 <sup>3</sup>Columbia University · <sup>4</sup>NYU Shanghai<br>
-<sup>*</sup>Equal contribution.
+<sup>&#42;</sup>Equal contribution.
 
 [![Project Page](https://img.shields.io/badge/Project-Page-2b5fa8?style=flat-square)](https://tantansir.github.io/latent-world-model-identifiability/)
 [![Paper PDF](https://img.shields.io/badge/Paper-PDF-2b5fa8?style=flat-square)](docs/assets/paper.pdf)
